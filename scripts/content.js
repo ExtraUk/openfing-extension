@@ -1,14 +1,13 @@
 async function main(){
     if(!document.getElementsByTagName('title').item(0).innerHTML.includes('Cursos') && !(document.getElementById('btnVisto') instanceof HTMLElement && !document.getElementsByTagName('title').item(0).innerHTML.includes('Inicio') && !document.getElementsByTagName('title').item(0).innerHTML.includes('Actualizaciones') && !document.getElementsByTagName('title').item(0).innerHTML.includes('FAQ'))){
-        let list = document.getElementsByClassName('ms-List-cell');
+        let list = document.getElementsByClassName('class-list__item');
 
         if(list){
             for(let i=0; i<list.length; i++){
-                let key = list.item(i).getElementsByTagName('a').item(0).getAttribute('href').split('courses/')[1];
+                let key = list.item(i).getAttribute('href').split('courses/')[1];
                 let button = document.createElement('button');
                 const aux = list.item(i).lastChild;
-                list.item(i).replaceChild(button, aux);
-                list.item(i).appendChild(aux);
+                list.item(i).after(button);
                 chrome.storage.sync.get(key, function(obj){
                     let state = obj[key];
                     if(state == 'w'){
