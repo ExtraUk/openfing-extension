@@ -4,7 +4,8 @@ async function main(){
 
         if(list){
             for(let i=0; i<list.length; i++){
-                let key = list.item(i).getAttribute('href').split('courses/')[1];
+                let str = list.item(i).getAttribute('href').split('courses/')[1];
+                let key = str.slice(0,str.length-1);
                 let button = document.createElement('button');
                 const aux = list.item(i).lastChild;
                 list.item(i).after(button);
