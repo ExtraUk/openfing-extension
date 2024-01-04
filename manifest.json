@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "OpenFING Extension",
+  "description": "Cuack",
+  "version": "1.0",
+  "action": {
+    "default_popup": "openfing.html",
+    "default_icon": "openfing.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "runtime"
+  ],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://open.fing.edu.uy/*"
+      ],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
